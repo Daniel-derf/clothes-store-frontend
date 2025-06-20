@@ -14,7 +14,7 @@ const AdminProducts = () => {
         </>
       )}
 
-      {error && <>Erro!</>}
+      {error && <h2>Erro ao buscar produtos!</h2>}
 
       {products &&
         products.map((p) => (

@@ -6,7 +6,7 @@ import { request } from "../utils/request";
 
 function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -19,8 +19,30 @@ function useProducts() {
     const response = await request("/products");
 
     if (!response.ok) {
-      const errorBody = await response.json();
-      setError(errorBody);
+      const reader = response.body?.getReader();
+      const chunks: Uint8Array[] = [];
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          if (value) chunks.push(value);
+        }
+      }
+
+      const totalLength = chunks.reduce((acc, curr) => acc + curr.length, 0);
+      const bodyUint8 = new Uint8Array(totalLength);
+      let offset = 0;
+      for (const chunk of chunks) {
+        bodyUint8.set(chunk, offset);
+        offset += chunk.length;
+      }
+      const bodyString = new TextDecoder().decode(bodyUint8);
+
+      console.log(bodyString);
+
+      setError(bodyString);
+      setIsLoading(false);
 
       return;
     }

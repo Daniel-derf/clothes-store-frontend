@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 // types
 import Product from "../types/Product";
+import { request } from "../utils/request";
 
 function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,7 +16,7 @@ function useProducts() {
   async function fetchProducts() {
     setIsLoading(true);
 
-    const response = await fetch("http://localhost:3000/products");
+    const response = await request("/products");
 
     if (!response.ok) {
       const errorBody = await response.json();

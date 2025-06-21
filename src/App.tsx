@@ -14,6 +14,8 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Wishlist from "./pages/Wishlist";
+import Cart from "./pages/Cart";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -21,8 +23,8 @@ function App() {
       <Route path="/" element={<Navigate to="/products" replace />} />
       <Route path="/products" element={<Home />}></Route>
       <Route path="/products/:id" element={<ProductDetails />}></Route>
-      <Route path="/cart" element={<Wishlist />}></Route>
-      <Route path="/orders" element={<Wishlist />}></Route>
+      <Route path="/cart" element={<Cart />}></Route>
+      <Route path="/orders" element={<Orders />}></Route>
       <Route path="/wishlist" element={<Wishlist />}></Route>
 
       {/* auth */}

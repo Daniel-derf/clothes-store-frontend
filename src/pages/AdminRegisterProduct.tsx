@@ -109,7 +109,6 @@ const AdminRegisterProduct = () => {
               value={qttInput}
               onChange={(e) => {
                 const val = e.target.value;
-                // Só atualiza se vazio ou >= 0
                 if (val === "" || Number(val) >= 0) {
                   setQttInput(val);
                 }

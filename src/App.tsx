@@ -10,11 +10,13 @@ import AdminHome from "./pages/AdminHome";
 import AdminClients from "./pages/AdminClients";
 import AdminProducts from "./pages/AdminProducts";
 import AdminRegisterProduct from "./pages/AdminRegisterProduct";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
+      <Route path="/products/:id" element={<ProductDetails />}></Route>
 
       {/* admin routes */}
       <Route path="/admin" element={<AdminHome />}></Route>

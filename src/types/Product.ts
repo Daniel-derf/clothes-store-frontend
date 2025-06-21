@@ -3,6 +3,7 @@ type Product = {
   name: string;
   price: number;
   sex: string;
+  imageUrl: string;
   description: string;
   ratingId: number;
   availableSizeQtt: { [size: string]: number };

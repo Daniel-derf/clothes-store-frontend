@@ -127,7 +127,7 @@ const AdminRegisterProduct = () => {
           <ul className="text-sm text-gray-700 space-y-1">
             {Object.entries(formData.availableSizeQtt).map(([size, qtt]) => (
               <li key={size}>
-                <span className="font-semibold">{size}:</span> {qtt}
+                <span className="font-semibold">{size}:</span> {qtt as number}
               </li>
             ))}
           </ul>

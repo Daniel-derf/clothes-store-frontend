@@ -2,7 +2,7 @@
 import "./App.css";
 
 // libs
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // pages
 import Home from "./pages/Home";
@@ -18,11 +18,16 @@ import Wishlist from "./pages/Wishlist";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
+      <Route path="/" element={<Navigate to="/products" replace />} />
+      <Route path="/products" element={<Home />}></Route>
       <Route path="/products/:id" element={<ProductDetails />}></Route>
+      <Route path="/cart" element={<Wishlist />}></Route>
+      <Route path="/orders" element={<Wishlist />}></Route>
+      <Route path="/wishlist" element={<Wishlist />}></Route>
+
+      {/* auth */}
       <Route path="/login" element={<Login />}></Route>
       <Route path="/register" element={<Register />}></Route>
-      <Route path="/wishlist" element={<Wishlist />}></Route>
 
       {/* admin routes */}
       <Route path="/admin" element={<AdminHome />}></Route>
